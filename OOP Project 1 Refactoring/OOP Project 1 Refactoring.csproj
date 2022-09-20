@@ -50,6 +50,7 @@
     <Compile Include="Education.cs" />
     <Compile Include="Enums.cs" />
     <Compile Include="Experience.cs" />
+    <Compile Include="Introduction.cs" />
     <Compile Include="MainMenu.cs" />
     <Compile Include="MainMenuOption.cs" />
     <Compile Include="MutalAid.cs" />

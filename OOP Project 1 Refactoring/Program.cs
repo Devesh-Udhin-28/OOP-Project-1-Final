@@ -10,7 +10,7 @@ namespace OOP_Project_1_Refactoring
     {
         static void Main(string[] args)
         {
-
+            new Introduction();
             new MainMenu().Display();
 
         }
