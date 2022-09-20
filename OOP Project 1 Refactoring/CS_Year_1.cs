@@ -9,7 +9,7 @@ namespace OOP_Project_1_Refactoring
     internal class CS_Year_1 : MainMenuOption
     {
 
-        private StringBuilder content;
+        private readonly StringBuilder content;
 
         public CS_Year_1()
         {
@@ -31,6 +31,7 @@ namespace OOP_Project_1_Refactoring
         {
 
             Console.WriteLine(content);
+            // when all modules & projects are already displayed, the user will get back to the education Menu
             return new Education().Display();
 
         }

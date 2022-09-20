@@ -9,7 +9,7 @@ namespace OOP_Project_1_Refactoring
     internal class Experience : MainMenuOption
     {
 
-        private StringBuilder menuContent;
+        private readonly StringBuilder menuContent;
         
         public Experience()
         {
@@ -24,7 +24,8 @@ namespace OOP_Project_1_Refactoring
         {
 
             SortedList<int, Func<MainMenuOption>> selectedOptions = new SortedList<int, Func<MainMenuOption>>();
-
+            
+            // each selected values will call the corresponding object's "Display" function
             selectedOptions.Add(0, () => { return new MainMenu().Display(); });
             selectedOptions.Add(1, () => { return new MutalAid().Display(); });
             selectedOptions.Add(2, () => { return new Ceridian().Display(); });
@@ -33,19 +34,25 @@ namespace OOP_Project_1_Refactoring
 
             try
             {
+                Experience experience;
                 int num = Convert.ToInt32(Console.ReadLine());
 
+                // verifying if the value entered is found in the Main Menu Enum
+                // if not, it will keep displying back the Main Menu options
                 while (!Enum.IsDefined(typeof(ChoiceExperience), num))
                 {
-                    Experience experience = new Experience();
+                    experience = new Experience();
                     return experience.Display();
                 }
 
+                // returns the delegate with the corresponding "Display" method signature
                 return selectedOptions[num]();
 
             }
             catch (System.FormatException)
             {
+                // if any characters other than numerical values are entered,
+                // the Main Menu will be displayed back
                 new Experience().Display();
             }
 

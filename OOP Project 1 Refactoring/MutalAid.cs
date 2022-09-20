@@ -9,7 +9,7 @@ namespace OOP_Project_1_Refactoring
     internal class MutalAid : MainMenuOption
     {
 
-        private StringBuilder content;
+        private readonly StringBuilder content;
 
         public MutalAid()
         {
@@ -22,6 +22,7 @@ namespace OOP_Project_1_Refactoring
         {
 
             Console.WriteLine(content);
+            // when all experience details are already displayed, the user will get back to the experience Menu
             return new Experience().Display();
 
         }

@@ -9,7 +9,7 @@ namespace OOP_Project_1_Refactoring
     internal class MainMenu : MainMenuOption
     {
 
-        private StringBuilder menuContent;
+        private readonly StringBuilder menuContent;
 
         public MainMenu()
         {
@@ -29,6 +29,7 @@ namespace OOP_Project_1_Refactoring
         {
             SortedList<int, Func<MainMenuOption>> selectedOptions = new SortedList<int, Func<MainMenuOption>>();
 
+            // each selected values will call the corresponding object's "Display" function
             selectedOptions.Add(1, () => { return new Experience().Display(); });
             selectedOptions.Add(2, () => { return new Education().Display(); });
             selectedOptions.Add(3, () => { return new Skills().Display(); });
@@ -39,24 +40,30 @@ namespace OOP_Project_1_Refactoring
 
             try
             {
+                MainMenu mainMenu;
                 int num = Convert.ToInt32(Console.ReadLine());
 
+                // verifying if the value entered is found in the Main Menu Enum
+                // if not, it will keep displying back the Main Menu options
                 while (!Enum.IsDefined(typeof(MainMenuChoices), num))
                 {
-                    MainMenu mainMenu = new MainMenu();
+                    mainMenu = new MainMenu();
                     return mainMenu.Display();
                 }
 
-                //here is just one if statement that will provide the user the option to exit the code from the 
-                //terminal itself
+                // here is just one if statement that will provide the user the option to exit the code from the 
+                // terminal itself
                 if(num == 0)
                     Environment.Exit(0);
 
+                // returns the delegate with the corresponding "Display" method signature
                 return selectedOptions[num]();
 
             }
             catch (System.FormatException)
             {
+                // if any characters other than numerical values are entered,
+                // the Main Menu will be displayed back
                 new MainMenu().Display();
             }
 

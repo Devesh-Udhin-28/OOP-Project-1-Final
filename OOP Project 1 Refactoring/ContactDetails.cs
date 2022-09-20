@@ -9,7 +9,7 @@ namespace OOP_Project_1_Refactoring
     internal class ContactDetails : MainMenuOption
     {
 
-        private StringBuilder content;
+        private readonly StringBuilder content;
 
         public ContactDetails()
         {
@@ -24,6 +24,7 @@ namespace OOP_Project_1_Refactoring
         {
 
             Console.WriteLine(content);
+            // when all contact details are already displayed, the user will get back to the Main Menu
             return new MainMenu().Display();
 
         }

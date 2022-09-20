@@ -8,7 +8,7 @@ namespace OOP_Project_1_Refactoring
 {
     internal class Introduction
     {
-        StringBuilder introduction;
+        readonly StringBuilder introduction;
         public Introduction()
         {
             introduction = new StringBuilder();

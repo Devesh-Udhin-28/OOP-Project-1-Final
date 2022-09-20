@@ -9,7 +9,7 @@ namespace OOP_Project_1_Refactoring
     internal class Skills : MainMenuOption
     {
 
-        private StringBuilder content;
+        private readonly StringBuilder content;
 
         public Skills()
         {
@@ -22,6 +22,7 @@ namespace OOP_Project_1_Refactoring
         {
 
             Console.WriteLine(content);
+            // when all skills are already displayed, the user will get back to the Main Menu
             return new MainMenu().Display();
 
         }
