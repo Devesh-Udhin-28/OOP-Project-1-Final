@@ -10,9 +10,18 @@ namespace OOP_Project_1_Refactoring
     {
 
         private readonly StringBuilder menuContent;
-        
+        private SortedList<ChoiceExperience, Func<MainMenuOption>> selectedOptions;
+
+
         public Experience()
         {
+            selectedOptions = new SortedList<ChoiceExperience, Func<MainMenuOption>>();
+
+            // each selected values will call the corresponding object's "Display" function
+            selectedOptions.Add(ChoiceExperience.goBack, () => { return new MainMenu().Display(); });
+            selectedOptions.Add(ChoiceExperience.MutualAid, () => { return new MutalAid().Display(); });
+            selectedOptions.Add(ChoiceExperience.Ceridian, () => { return new Ceridian().Display(); });
+
             menuContent = new StringBuilder("-------------------------EXPERIENCE-------------------------\n");
             menuContent.AppendLine("1. Mauritius Civil Services Mutual Aid Association (02 July 2020 to 25 September 2020)");
             menuContent.AppendLine("2. CERIDIAN Mauritius Limited (05 September 2022 to 11 November 2022)");
@@ -22,13 +31,6 @@ namespace OOP_Project_1_Refactoring
 
         public MainMenuOption Display()
         {
-
-            SortedList<ChoiceExperience, Func<MainMenuOption>> selectedOptions = new SortedList<ChoiceExperience, Func<MainMenuOption>>();
-            
-            // each selected values will call the corresponding object's "Display" function
-            selectedOptions.Add(ChoiceExperience.goBack, () => { return new MainMenu().Display(); });
-            selectedOptions.Add(ChoiceExperience.MutualAid, () => { return new MutalAid().Display(); });
-            selectedOptions.Add(ChoiceExperience.Ceridian, () => { return new Ceridian().Display(); });
 
             Console.WriteLine(menuContent);
 

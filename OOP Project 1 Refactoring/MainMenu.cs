@@ -10,9 +10,18 @@ namespace OOP_Project_1_Refactoring
     {
 
         private readonly StringBuilder menuContent;
+        private SortedList<MainMenuChoices, Func<MainMenuOption>> selectedOptions;
 
         public MainMenu()
         {
+            selectedOptions = new SortedList<MainMenuChoices, Func<MainMenuOption>>();
+
+            // each selected values will call the corresponding object's "Display" function
+            selectedOptions.Add(MainMenuChoices.experience, () => { return new Experience().Display(); });
+            selectedOptions.Add(MainMenuChoices.education, () => { return new Education().Display(); });
+            selectedOptions.Add(MainMenuChoices.skills, () => { return new Skills().Display(); });
+            selectedOptions.Add(MainMenuChoices.technologicalSkills, () => { return new TechnologicalSkills().Display(); });
+            selectedOptions.Add(MainMenuChoices.contactDetails, () => { return new ContactDetails().Display(); });
 
             menuContent = new StringBuilder("-------------------------MAIN MENU-------------------------\n");
             menuContent.AppendLine("1. Experience / Job History");
@@ -27,14 +36,6 @@ namespace OOP_Project_1_Refactoring
 
         public MainMenuOption Display()
         {
-            SortedList<MainMenuChoices, Func<MainMenuOption>> selectedOptions = new SortedList<MainMenuChoices, Func<MainMenuOption>>();
-
-            // each selected values will call the corresponding object's "Display" function
-            selectedOptions.Add(MainMenuChoices.experience, () => { return new Experience().Display(); });
-            selectedOptions.Add(MainMenuChoices.education, () => { return new Education().Display(); });
-            selectedOptions.Add(MainMenuChoices.skills, () => { return new Skills().Display(); });
-            selectedOptions.Add(MainMenuChoices.technologicalSkills, () => { return new TechnologicalSkills().Display(); });
-            selectedOptions.Add(MainMenuChoices.contactDetails, () => { return new ContactDetails().Display(); });
 
             Console.WriteLine(menuContent);
 

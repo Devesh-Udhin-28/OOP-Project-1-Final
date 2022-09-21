@@ -10,9 +10,17 @@ namespace OOP_Project_1_Refactoring
     {
 
         private readonly StringBuilder menuContent;
+        private SortedList<ChoiceEducation, Func<MainMenuOption>> selectedOptions;
 
         public Education()
         {
+            selectedOptions = new SortedList<ChoiceEducation, Func<MainMenuOption>>();
+
+            // each selected values will call the corresponding object's "Display" function
+            selectedOptions.Add(ChoiceEducation.goBack, () => { return new MainMenu().Display(); });
+            selectedOptions.Add(ChoiceEducation.ComputerScience1, () => { return new CS_Year_1().Display(); });
+            selectedOptions.Add(ChoiceEducation.ComputerScience2, () => { return new CS_Year_2().Display(); });
+
             menuContent = new StringBuilder("-------------------------EDUCATION-------------------------\n");
             menuContent.AppendLine("1. Computer Science (Year 1)");
             menuContent.AppendLine("2. Computer Science (Year 2)");
@@ -22,13 +30,6 @@ namespace OOP_Project_1_Refactoring
 
         public MainMenuOption Display()
         {
-
-            SortedList<ChoiceEducation, Func<MainMenuOption>> selectedOptions = new SortedList<ChoiceEducation, Func<MainMenuOption>>();
-
-            // each selected values will call the corresponding object's "Display" function
-            selectedOptions.Add(ChoiceEducation.goBack, () => { return new MainMenu().Display(); });
-            selectedOptions.Add(ChoiceEducation.ComputerScience1, () => { return new CS_Year_1().Display(); });
-            selectedOptions.Add(ChoiceEducation.ComputerScience2, () => { return new CS_Year_2().Display(); });
 
             Console.WriteLine(menuContent);
 
