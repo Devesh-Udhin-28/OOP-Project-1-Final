@@ -27,14 +27,14 @@ namespace OOP_Project_1_Refactoring
 
         public MainMenuOption Display()
         {
-            SortedList<int, Func<MainMenuOption>> selectedOptions = new SortedList<int, Func<MainMenuOption>>();
+            SortedList<MainMenuChoices, Func<MainMenuOption>> selectedOptions = new SortedList<MainMenuChoices, Func<MainMenuOption>>();
 
             // each selected values will call the corresponding object's "Display" function
-            selectedOptions.Add(1, () => { return new Experience().Display(); });
-            selectedOptions.Add(2, () => { return new Education().Display(); });
-            selectedOptions.Add(3, () => { return new Skills().Display(); });
-            selectedOptions.Add(4, () => { return new TechnologicalSkills().Display(); });
-            selectedOptions.Add(5, () => { return new ContactDetails().Display(); });
+            selectedOptions.Add(MainMenuChoices.experience, () => { return new Experience().Display(); });
+            selectedOptions.Add(MainMenuChoices.education, () => { return new Education().Display(); });
+            selectedOptions.Add(MainMenuChoices.skills, () => { return new Skills().Display(); });
+            selectedOptions.Add(MainMenuChoices.technologicalSkills, () => { return new TechnologicalSkills().Display(); });
+            selectedOptions.Add(MainMenuChoices.contactDetails, () => { return new ContactDetails().Display(); });
 
             Console.WriteLine(menuContent);
 
@@ -57,7 +57,7 @@ namespace OOP_Project_1_Refactoring
                     Environment.Exit(0);
 
                 // returns the delegate with the corresponding "Display" method signature
-                return selectedOptions[num]();
+                return selectedOptions[(MainMenuChoices)num]();
 
             }
             catch (System.FormatException)

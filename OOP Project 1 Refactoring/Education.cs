@@ -23,12 +23,12 @@ namespace OOP_Project_1_Refactoring
         public MainMenuOption Display()
         {
 
-            SortedList<int, Func<MainMenuOption>> selectedOptions = new SortedList<int, Func<MainMenuOption>>();
+            SortedList<ChoiceEducation, Func<MainMenuOption>> selectedOptions = new SortedList<ChoiceEducation, Func<MainMenuOption>>();
 
             // each selected values will call the corresponding object's "Display" function
-            selectedOptions.Add(0, () => { return new MainMenu().Display(); });
-            selectedOptions.Add(1, () => { return new CS_Year_1().Display(); });
-            selectedOptions.Add(2, () => { return new CS_Year_2().Display(); });
+            selectedOptions.Add(ChoiceEducation.goBack, () => { return new MainMenu().Display(); });
+            selectedOptions.Add(ChoiceEducation.ComputerScience1, () => { return new CS_Year_1().Display(); });
+            selectedOptions.Add(ChoiceEducation.ComputerScience2, () => { return new CS_Year_2().Display(); });
 
             Console.WriteLine(menuContent);
 
@@ -46,7 +46,7 @@ namespace OOP_Project_1_Refactoring
                 }
 
                 // returns the delegate with the corresponding "Display" method signature
-                return selectedOptions[num]();
+                return selectedOptions[(ChoiceEducation)num]();
 
             }
             catch (System.FormatException)
