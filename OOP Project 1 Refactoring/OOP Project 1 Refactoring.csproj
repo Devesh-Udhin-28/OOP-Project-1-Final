@@ -43,7 +43,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AllSortedLists.cs" />
     <Compile Include="Ceridian.cs" />
     <Compile Include="ContactDetails.cs" />
     <Compile Include="CS_Year_1.cs" />
